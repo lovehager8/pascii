@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+  
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+
+  
+<body onmousedown="mouseDown(event);" ontouchstart="touchStart(event);" onmousemove="showCoords(event);" onmouseup="mouseUp(event);" ontouchmove="touchMove(event);" ontouchend="touchEnd(event);">
+
+  
+  
+  
+  <div id="blueDIV"> Welcome to Pascii</div>
+  <div id="greenDIV"> Welcome to Pascii</div>
+  <div id="redDIV"> Welcome to Pascii</div>
+  <div id="myDIV"> </div>
+  <script>
+    darkMode = true;
+    function ColorSwitch() {
+      var x = document.getElementById("myDIV");
+      var backColor = document.getElementById("greenDIV");
+      var y = document.getElementById("darkModeButton")
+      var z = document.getElementById("whiteButton")
+      if (darkMode) {
+        backColor.style.backgroundColor = "white";
+        x.style.color = "black";
+        y.innerHTML = "Dark Mode";
+        z.style.backgroundColor = "black";
+      }
+      else {
+        backColor.style.backgroundColor = "black";
+        x.style.color = "white";
+        y.innerHTML = "Light Mode";
+        z.style.backgroundColor = "white";
+      }
+      darkMode = !darkMode;
+    }
+    function CopyToClipboard(color) {
+                    if(color == 0) {divID = 'myDIV';} 
+                    else if(color == 1) {divID = 'blueDIV';} 
+                    else if(color == 2) {divID = 'redDIV';} 
+                    else {divID = 'greenDIV';}
+                    var range = document.createRange();
+                    range.selectNode(document.getElementById(divID));
+                    window.getSelection().removeAllRanges(); // clear current selection
+                    window.getSelection().addRange(range); // to select text
+                    document.execCommand("copy");
+                    window.getSelection().removeAllRanges();// to deselect
+alert("Copied!");
+                }
+
+    
+    let color = 0;
+    window.value = 2;
+    let shuffle = 1;
+    let letters = ["&nbsp;", ".", "c", "O", "$", "@", "#","█"];
+    let click = new Boolean(false);
+    //20 pixels "&nbsp;"
+    let pixelsw = [];
+    let pixelsb = [];
+    let pixelsr = [];
+    let pixelsg = [];
+    function generatepixels(){
+      pixelsw = [];
+      for(let i = 0; i<25; i++){
+      pixelsw.push(Array(70).fill("&nbsp;"));}
+      pixelsb = [];
+      for(let i = 0; i<25; i++){
+      pixelsb.push(Array(70).fill("&nbsp;"));}
+      pixelsr = [];
+      for(let i = 0; i<25; i++){
+      pixelsr.push(Array(70).fill("&nbsp;"));}
+      pixelsg = [];
+      for(let i = 0; i<25; i++){
+      pixelsg.push(Array(70).fill("&nbsp;"));}
+    }
+    
+    generatepixels();
+
+function mouseDown(event) {
+  clicked(event);
+  showCoords(event);
+}
+
+function touchStart(event) {
+  clicked(event.touches[0]);
+  showCoords(event.touches[0]);
+}
+
+function mouseUp(event) {
+  clicked(event);
+}
+
+function touchMove(event) {
+  event.preventDefault(); // Prevent scrolling on touch devices
+  showCoords(event.touches[0]);
+}
+function touchStart(event) {
+  clicked(event.touches[0]);
+  showCoords(event.touches[0]);
+}
+function touchEnd(event) {
+  clicked(event.touches[0]);
+} 
+    
+function circlepixels(x0, y0, r) {
+  for (let y = -r; y <= r; y++) {
+    for (let x = -r; x <= r; x++) {
+      if (x * x + y * y <= r * r) {
+        const i = x0 + x;
+        const j = y0 + y;
+        if (j >= 0 && j < 25 && i >= 0 && i < 70) {
+          if(color == 0) {pixelsw[j][i] = letters[shuffle];} else if(color == 1) {pixelsb[j][i] = letters[shuffle];} else if(color == 2) {pixelsr[j][i] = letters[shuffle];} else {pixelsg[j][i] = letters[shuffle];}
+        }
+      }
+    }
+  }
+}
+    
+    function clicked(event) {
+      click = !click;
+      
+    }
+    function showCoords(event) {
+      var rect = document.getElementById("myDIV").getBoundingClientRect();
+      let cX = Math.floor((event.clientX - rect.left)/9.6);
+      let cY = Math.floor((event.clientY - rect.top)/18.3);
+      
+      if (cX < 70 && cY < 25) {
+
+        if (!click){
+          if(window.value > 1) {circlepixels(cX, cY, window.value-1);}
+          
+          else {
+            if(color == 0) {pixelsw[cY][cX] = letters[shuffle];} else if(color == 1) {pixelsb[cY][cX] = letters[shuffle];} else if(color == 2) {pixelsr[cY][cX] = letters[shuffle];} else {pixelsg[cY][cX] = letters[shuffle];}
+          }
+                                   
+        }
+        
+      }
+      
+      document.getElementById("myDIV").innerHTML = "";
+      document.getElementById("blueDIV").innerHTML = "";
+      document.getElementById("redDIV").innerHTML = "";
+      document.getElementById("greenDIV").innerHTML = "";
+      for(let i = 0; i<25; i++){
+        document.getElementById("myDIV").innerHTML += pixelsw[i].join("") + "<br>";
+        document.getElementById("blueDIV").innerHTML += pixelsb[i].join("") + "<br>";
+        document.getElementById("redDIV").innerHTML += pixelsr[i].join("") + "<br>";
+        document.getElementById("greenDIV").innerHTML += pixelsg[i].join("") + "<br>";
+      }
+    }
+    
+  </script> 
+  <script src="script.js"></script>
+  <button class="button" onclick="shuffle=0;">Eraser</button>
+  <button class="button" onclick="shuffle=1;">.</button>
+  <button class="button" onclick="shuffle=2;">c</button>
+  <button class="button" onclick="shuffle=3;">O</button>
+  <button class="button" onclick="shuffle=4;">$</button>
+  <button class="button" onclick="shuffle=5;">@</button>
+  <button class="button" onclick="shuffle=6;">#</button> 
+  <button class="button" onclick="shuffle=7;">█</button>
+  
+  &nbsp; 
+  
+  <button id="whiteButton" class="button button1" onclick="color=0;"></button>
+  <button class="button button2" onclick="color=1;"></button>
+  <button class="button button3" onclick="color=2;"></button>
+  <button class="button button4" onclick="color=3;"></button>
+  
+  <br>
+  <span style="font: 16px Courier New;">Size:</span>
+  <div class="slidecontainer">
+  <input type="range" min="1" max="6" value="2" class="slider" id="myRange">
+  </div>
+  <script>
+    var slider = document.getElementById("myRange");
+
+    // Update the current slider value (each time you drag the slider handle)
+    slider.oninput = function() {
+      window.value = this.value;
+      console.log(this.value, window.value);
+    }
+  </script>
+  
+  <br>
+  
+  <button class="button button1" onclick="generatepixels();">Clear</button>
+
+  <br>
+
+  <button class="button button1" onclick="CopyToClipboard(color);">Copy active color</button>
+
+  <br>
+  
+  <button id="darkModeButton" class="button button1" onclick="ColorSwitch();">Light mode</button>
+  <!--
+  This script places a badge on your repl's full-browser view back to your repl's cover
+  page. Try various colors for the theme: dark, light, red, orange, yellow, lime, green,
+  teal, blue, blurple, magenta, pink!
+  -->
+  <script src="https://replit.com/public/js/replit-badge-v2.js" theme="dark" position="bottom-right"></script>
+
+  
+</body>
+
+</html>

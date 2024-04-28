@@ -1,0 +1,182 @@
+html {
+  height: 100%;
+  width: 100%;
+  color: white;
+  overflow: hidden;
+  text-shadow: 1px 1px #000000;
+  
+}
+body {
+  overflow: hidden;
+  background-color: #2c334e;
+}
+#greenDIV {
+  height: 460px;
+  width: 674px;
+  margin-left: auto;
+  margin-right: auto;
+  font: 16px Courier New;
+  top: 8px;
+  background-color: #000000;
+  color: #12f32c;
+  font-kerning: none;
+  cursor: pointer;
+  border-color: #161c4b;
+  border-radius: 5px;
+  border-style: solid;
+  -webkit-transition: all 0.2s ease-in-out;
+  
+}
+
+#redDIV {
+  height: 460px;
+  width: 674px;
+  top: 11px;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  position: absolute;
+  font: 16px Courier New;
+  font-kerning: none;
+  color: #e20303;
+  pointer-events: none;
+}
+
+#blueDIV {
+  height: 460px;
+  width: 674px;
+  top: 11px;
+  left: 49.9%;
+  transform: translate(-50%, 0%);
+  position: absolute;
+  font: 16px Courier New;
+  font-kerning: none;
+  color: #0840e7;
+  pointer-events: none;
+}
+
+#myDIV {
+  height: 460px;
+  width: 674px;
+  top: 11px;
+  left: 50.1%;
+  transform: translate(-50%, 0%);
+  position: absolute;
+  font: 16px Courier New;
+  font-kerning: none;
+  color: #ffffff;
+  pointer-events: none;
+  -webkit-transition: all 0.2s ease-in-out;
+  
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+.container {
+  overflow: hidden;
+}
+
+.button {
+  color: black;
+  padding: 8px 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  font: 16px Courier New;
+  border-color: #bababa;
+}
+
+.button1 {
+  background-color: #ffffff;
+  color: black;
+  border-radius: 3px;
+  border-style: solid;
+}
+
+.button1:hover {
+  background-color: #ffffff;
+  color: black;
+}
+
+.button2 {
+  background-color: #1553e5;
+  color: black;
+  border-radius: 3px;
+  border-style: solid;
+}
+
+.button2:hover {
+  background-color: #0a06f9;
+  color: #272e45;
+}
+.button3 {
+  background-color: #ea210b;
+  color: black;
+  border-radius: 3px;
+  border-style: solid;
+}
+
+.button3:hover {
+  background-color: #7f0606;
+  color: #272e45;
+}
+.button4 {
+  background-color: #0ddc09;
+  color: black;
+  border-radius: 3px;
+  border-style: solid;
+}
+
+.button4:hover {
+  background-color: #067919;
+  color: #272e45;
+}
+
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
+}
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 150px; /* Full-width */
+  height: 25px; /* Specified height */
+  background: #d3d3d3; /* Grey background */
+  outline: #bfbfbf solid 1px; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #04AA6D; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #04AA6D; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
